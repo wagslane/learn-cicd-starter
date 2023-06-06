@@ -4,7 +4,7 @@
 
 This repo contains the starter code for the "Notely" application for the "Learn CICD" course on [Boot.dev](https://boot.dev).
 
-This README is for reference purposes only! Follow the instructions in the course, don't start doing all the steps here in the README.
+*This README is for reference purposes only! Follow the instructions in the course, don't start doing all the steps here in the README.*
 
 ## Local Development
 
@@ -19,7 +19,7 @@ PORT="8000"
 Run the server:
 
 ```bash
-go build -o out && ./out
+go build -o notely && ./notely
 ```
 
 *This starts the server in non-database mode.* It will serve a webpage at `http://localhost:8000`. However, you won't be able to interact with the webpage until you connect it to a MySQL database and run the migrations.
@@ -49,7 +49,7 @@ Then run the migrations:
 Start the server:
 
 ```bash
-go build -o out && ./out
+go build -o notely && ./notely
 ```
 
 Because the `DATABASE_URL` environment variable is set, the server will connect to the database and serve the webpage at `http://localhost:8000`. The page should be fully functional now. You can:
