@@ -28,7 +28,10 @@ var staticFiles embed.FS
 
 // comment for tests
 func main() {
-	godotenv.Load(".env")
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
 	port := os.Getenv("PORT")
 	if port == "" {
