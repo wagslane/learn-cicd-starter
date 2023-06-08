@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -21,14 +21,13 @@ jobs:
       - name: Build app
         run: ./buildprod.sh
 
-      - name: Build Docker
-        run: docker build -t lanecwagner/notely:latest .
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v1'
         with:
-          username: lanecwagner
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-      - name: Push to Docker Hub
-        run: docker push lanecwagner/notely:latest
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+  
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+  
+      - name: 'Build and push Docker image'
+        run: 'gcloud builds submit --tag us-east1-docker.pkg.dev/notely-389215/notely-ar-repo/notely:latest .'
