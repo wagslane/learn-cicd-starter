@@ -1,4 +1,4 @@
-# learn-cicd-starter (Notely)
+# Notely
 
 ![code coverage badge](https://github.com/wagslane/learn-cicd-starter/workflows/ci/badge.svg)
 
